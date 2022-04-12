@@ -5,56 +5,26 @@
 
 trigger:
 
-- master
+- main
 
 
 pool:
 
 
-  vmImage: 'ubuntu-latest'
-
-
-strategy:
-
-
-  matrix:
-
-
-    Python27:
-
-
-      python.version: '2.7'
-
-
-
+  vmImage: windows-latest
 steps:
 
 
-- task: UsePythonVersion@0
+- task: CmdLine@2
 
 
   inputs:
-
-
-    versionSpec: '$(python.version)'
-
-
-  displayName: 'Use Python $(python.version)'
-
-
-- script: python "add.py"
-
-
-
-- task: PythonScript@0
-
-
+    script: 
+      javac AddTwoNumbers.java
+      java AddTwoNumbers.java
+- task: CmdLine@2
   inputs:
-
-
-    scriptSource: 'inline'
-
-
     script: |
-      print('This is Section 1 Azure Demonstration')
-      print('KL-CSE')
+      javac AddTwoNumbers.java
+       java AddTwoNumbers.java
+
